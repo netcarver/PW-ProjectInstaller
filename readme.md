@@ -22,16 +22,15 @@ This method means the user is presented with a simple choice when installing a p
 Usage
 -----
 
-1. Mandatory: Rename all the modules you want this module to install from .module to .module.php files and place
+1. **Mandatory:** Rename all the modules you want this module to install from .module to .module.php files and place
 them all in a common directory along with a copy of this module file.
-2. Optional but recommended: If your project delivers, say, an SMS sending package of modules then...
+2. *Optional but recommended:* If your project delivers, say, an SMS sending package of modules then...
+
 - rename 'Installer.module' to 'SmsInstaller.module'
 - edit the file and change the class from 'Installer' to 'SmsInstaller'
 - update the 'title' and 'description' fields in the getModuleInfo() method
-These changes will help differentiate your installer from other peoples and will provide more confirmation to your
-module's users that they are on the right track rather than having them just see the too generic
-'Found new module: Installer' message in the user interface.
-3. Madatory: Zip up or otherwise deliver the entire directory to your users.
+
+3. **Madatory:** Zip up or otherwise deliver the entire directory to your users.
 
 Once a user places the directory in their site/modules folder and gets PW to check for new modules, the user will
 see only  the 'Installer' module. When they install this module all the other modules will get installed and the
