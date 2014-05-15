@@ -4,7 +4,7 @@
  * Installer module
  * ================
  *
- * A PW module to install other PW modules.
+ * A PW module to install a set of modules.
  *
  * For instructions on usage, see the readme.md file.
  *
@@ -63,24 +63,25 @@ class Installer extends WireData implements Module
             rename($f, $newf);
         }
 
-        // We now have to force PW to rebuild the cache of module files or installation of our newly renamed modules
-        // will fail.
+        // Force PW to rebuild the cache of module files or installation of our newly renamed modules will fail.
         $modules->resetCache();
+
+        // Now actually install them...
         foreach ($files as $f) {
             $class = substr(basename($f), 0, -11);
             $this->message("Installing: " . $class);
             $modules->install($class);
         }
 
+        // Remove self from the modules DB table...
+        $class = __CLASS__;
+        $this->message("Removing installer.");
+        $query = $database->prepare('DELETE FROM modules WHERE class=:class LIMIT 1');
+        $query->bindValue(":class", $class, PDO::PARAM_STR);
+        $query->execute();
+
         // Delete our own file
-        if (unlink($tmpfile)) {
-            // Remove self from the modules DB table...
-            $class = __CLASS__;
-            $this->message("Removing installer.");
-            $query = $database->prepare('DELETE FROM modules WHERE class=:class LIMIT 1');
-            $query->bindValue(":class", $class, PDO::PARAM_STR);
-            $query->execute();
-        } else {
+        if (!unlink($tmpfile)) {
             // if deletion failed, rename ourself back to original so user can retry if needed.
             rename($tmpfile, $current);
         }
