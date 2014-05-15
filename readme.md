@@ -29,9 +29,9 @@ Firstly; rename 'Installer.module' to 'SmsInstaller.module'. Secondly; edit the 
 'Installer' to 'SmsInstaller'. Lastly; update the 'title' and 'description' fields in the getModuleInfo() method.
 3. **Madatory:** Zip up or otherwise deliver the entire directory to your users.
 
-Once a user places the directory in their site/modules folder and gets PW to check for new modules, the user will
-see only  the 'Installer' module. When they install this module all the other modules will get installed and the
-'Installer' will be gone.
+Once a user places the directory in their site/modules folder and gets PW to check for new modules, the user will only
+see the renamed 'Installer' module. When they install it all the other modules will get installed and the 'Installer'
+will be gone.
 
 
 Copyright
