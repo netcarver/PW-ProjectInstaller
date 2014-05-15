@@ -38,3 +38,9 @@ Copyright
 ---------
 
 Copyright 2014 Stephen Dickinson, QBox.
+
+
+License
+-------
+
+This module is released under the GPLv2 License. See the LICENSE file for more details.
