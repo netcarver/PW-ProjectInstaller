@@ -1,7 +1,7 @@
-Multi Module Installer
-======================
+Project Installer
+=================
 
-A PW module to neatly install a __set__ of PW modules whilst keeping the UI uncluttered.
+A PW module to neatly install a __set__ (or "project") of modules whilst keeping the UI uncluttered.
 
 
 Rationale
